@@ -1,24 +1,13 @@
 # my-vue
 
 ## Project setup
+
 ```
-yarn install
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## vue-cli3+安装 vux 和 vux-loader
 
-### Lints and fixes files
-```
-yarn lint
-```
+```bash
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
