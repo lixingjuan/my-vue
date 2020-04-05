@@ -1,24 +1,18 @@
 <template>
   <div>
     <tab>
-      <tab-item></tab-item>
+      <tab-item>11</tab-item>
+      <tab-item>2</tab-item>
     </tab>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-
-import { Tab, TabItem } from "vux";
-
-Vue.use(Tab);
-Vue.use(TabItem);
-
 export default {
   name: "",
   components: {
-    Tab,
-    TabItem
+    // Tab,
+    // TabItem
   },
   props: {},
   data() {

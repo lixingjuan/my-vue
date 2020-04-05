@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 
 import Home from "../views/Home/index.vue";
 // import FilePrview from "../views/FilePrview";
-import AntdDemo from "../views/AntdDemo/index.vue";
+// import AntdDemo from "../views/AntdDemo/index.vue";
 import ScrollDemo from "@/views/ScrollDemo/index.vue";
-import TodoListPage from "../views/TodoListPage/index.vue";
+// import TodoListPage from "../views/TodoListPage/index.vue";
 
 Vue.use(VueRouter);
 
@@ -27,21 +27,21 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: FilePrview
   }, */
-  {
-    // path: "/FilePrview",
-    path: "/AntdDemo",
-    name: "AntdDemo",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: AntdDemo
-  },
-  {
-    path: "/TodoListPage",
-    name: "TodoListPage",
-    component: TodoListPage
-  },
-  /* 收款情况统计 */
+  // {
+  //   // path: "/FilePrview",
+  //   path: "/AntdDemo",
+  //   name: "AntdDemo",
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: AntdDemo
+  // },
+  // {
+  //   path: "/TodoListPage",
+  //   name: "TodoListPage",
+  //   component: TodoListPage
+  // },
+  // /* 收款情况统计 */
   {
     path: "/ScrollDemo",
     name: "ScrollDemo",

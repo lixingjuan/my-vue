@@ -1,11 +1,11 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import vuexI18n from "vuex-i18n";
 
 import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 
-Vue.use(Vuex);
+Vue.use(vuexI18n.plugin, store);
 
 // antd
 import { Button, message, notification } from "ant-design-vue";
@@ -13,8 +13,12 @@ Vue.component(Button.name, Button);
 
 // vux
 import { Tab, TabItem } from "vux";
+import { ButtonTab, ButtonTabItem } from "vux";
+
 Vue.component("tab", Tab);
 Vue.component("tab-item", TabItem);
+Vue.component("button-tab", ButtonTab);
+Vue.component("button-tab-item", ButtonTabItem);
 
 // 全局配置
 notification.config({

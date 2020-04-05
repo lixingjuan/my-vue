@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import TodoList from "./TodoList.vue";
 import BaseTopNav from "@/components/BaseTopNav.vue";
 import BaseBottomNav from "@/components/BaseBottomNav.vue";
+import { TodoList } from "@/components/TodoListComponents";
 
 import { queryTodoItemsAPI } from "@/request";
 
