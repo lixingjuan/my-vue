@@ -14,15 +14,15 @@ module.exports = {
     loaderOptions: {
       less: {
         javascriptEnabled: true
+        // prependData: `@import "@/styles/global.less"`
+      },
+      scss: {
+        prependData: `@import "@/styles/global.scss"`
       }
     }
   },
   configureWebpack: config => {
     // 修复HMR失效问题？？？是为啥？
     config.resolve.symlinks = true;
-    // vuxLoader.merge(config, {
-    //   options: {},
-    //   plugins: ["vux-ui"]
-    // });
   }
 };

@@ -12,11 +12,11 @@ import { Button, message, notification } from "ant-design-vue";
 Vue.component(Button.name, Button);
 
 // vux
-import { Tab, TabItem } from "vux";
-import { ButtonTab, ButtonTabItem } from "vux";
+import { Tab, TabItem, ButtonTab, ButtonTabItem, XHeader } from "vux";
 
 Vue.component("tab", Tab);
 Vue.component("tab-item", TabItem);
+Vue.component("x-header", XHeader);
 Vue.component("button-tab", ButtonTab);
 Vue.component("button-tab-item", ButtonTabItem);
 

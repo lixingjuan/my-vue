@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { baseURL } from "./commonUrl";
+import { baseURL } from "./ComUrls";
 
 // axios.defaults.baseURL = baseURL;
 
