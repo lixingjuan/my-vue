@@ -46,6 +46,11 @@ Vue.use(VueRouter);
 ${importArr}
 
 const routes = [
+  {
+    path: "/",
+    name: 'homepage',
+    component: HomePage,
+  },
   ${routes}
 ]
 

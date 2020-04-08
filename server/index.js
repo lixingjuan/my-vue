@@ -3,7 +3,7 @@ const route = require("koa-route");
 const bodyParser = require("koa-bodyparser");
 
 const { query } = require("./db/index");
-const { queryTodoItemsIsDoneSQL, queryTodoItemsIsNotDoneSQL } = require("./db/sql");
+const { queryTodoItemsIsDoneSQL, queryTodoItemsIsNotDoneSQL, addTodoItemSQL } = require("./db/sql");
 const app = new Koa();
 
 // 注意require('koa-router')返回的是函数:
@@ -45,6 +45,19 @@ const items = async ctx => {
   ctx.response.body = res;
 };
 
+const addTodoItem = async ctx => {
+  console.log(ctx.request.body);
+  // 遍历body 生成 键数组和值数组
+  const reqObj = ctx.request.body;
+  const keysArr = Object.keys(reqObj);
+  const valuesArr = Object.values(reqObj);
+  let res = await query(
+    `INSERT INTO table_name (${keysArr.join(",")}) VALUES (${valuesArr.join(",")})`
+  );
+  console.log(res);
+  ctx.response.body = res;
+};
+
 console.log("over");
 // app.use(async ctx => {
 //   ctx.body = "Hello World";
@@ -54,6 +67,7 @@ app.use(route.get("/", main));
 app.use(route.get("/demo", demo));
 app.use(route.get("/err", redirect));
 app.use(route.post("/queryTodoItems", items));
+app.use(route.post("/addTodoItem", addTodoItem));
 // app.use(main);
 
 app.listen(4000);

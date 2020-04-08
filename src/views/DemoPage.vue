@@ -1,6 +1,7 @@
 <template>
   <div>
     <base-top-nav></base-top-nav>
+    <div id="demo"></div>
     <base-bottom-nav></base-bottom-nav>
   </div>
 </template>
@@ -26,4 +27,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+#demo {
+  width: 10px;
+}
+</style>

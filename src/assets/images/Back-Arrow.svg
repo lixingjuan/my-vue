@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Back-Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="报账单" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-报销单头信息" transform="translate(-354.000000, -81.000000)" fill="#D2D2D2">
+            <polygon id="Back-Arrow" transform="translate(357.000000, 86.000000) scale(-1, -1) translate(-357.000000, -86.000000) " points="354 86 359.04 81 360 81.952381 355.92 86 360 90.047619 359.04 91"></polygon>
+        </g>
+    </g>
+</svg>

@@ -14,10 +14,10 @@ module.exports = {
     loaderOptions: {
       less: {
         javascriptEnabled: true
-        // prependData: `@import "@/styles/global.less"`
+        // prependData: `@import "@/styles/global.less";`
       },
       scss: {
-        prependData: `@import "@/styles/global.scss"`
+        prependData: `@import "@/styles/global.scss";`
       }
     }
   },
