@@ -34,9 +34,9 @@ const redirect = ctx => {
 const items = async ctx => {
   const { isComplete } = ctx.request.body;
   let res;
-  if (isComplete === false) {
+  if (isComplete === true) {
     res = await query(queryTodoItemsIsDoneSQL);
-  } else if (isComplete === true) {
+  } else if (isComplete === false) {
     res = await query(queryTodoItemsIsNotDoneSQL);
   } else {
     res = await query("SELECT * from todolist");
@@ -49,11 +49,20 @@ const addTodoItem = async ctx => {
   console.log(ctx.request.body);
   // 遍历body 生成 键数组和值数组
   const reqObj = ctx.request.body;
-  const keysArr = Object.keys(reqObj);
-  const valuesArr = Object.values(reqObj);
+  const { uuid, todoText, isDone } = reqObj;
+  // {
+  //   todoText: '',
+  //   uuid: '',
+  //   isDone:0
+  // }
+  console.log(isDone);
   let res = await query(
-    `INSERT INTO table_name (${keysArr.join(",")}) VALUES (${valuesArr.join(",")})`
+    `INSERT INTO todolist
+     (uuid,todoText,isDone) 
+     VALUES
+     ('${uuid}','${todoText}','${isDone}')`
   );
+
   console.log(res);
   ctx.response.body = res;
 };

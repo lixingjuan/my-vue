@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import uuid from "uuid";
+
 import BaseTopNav from "@/components/BaseComponents/BaseTopNav.vue";
 import BaseBottomNav from "@/components/BaseComponents/BaseBottomNav.vue";
 import { TodoList } from "@/components/TodoListComponents";
@@ -57,11 +59,9 @@ export default {
     },
     addItem() {
       const params = {
-        id: "11",
-        todo_text: this.inputTodo,
-        name: null,
-        is_exist: 1,
-        isdone: 0
+        todoText: this.inputTodo,
+        uuid: uuid(),
+        isDone: 0
       };
 
       addTodoItemApi(params);
@@ -73,13 +73,15 @@ export default {
 <style scoped lang="scss">
 #addWrap {
   display: flex;
+  height: 3rem;
+  background-color: #666;
+  line-height: 3rem;
   #addInput {
-    background-color: #666;
+    width: 70%;
+    border: 1px #000 solid;
   }
   #addButton {
-    width: 30px;
-    height: 20px;
-    background-color: coral;
+    width: 28%;
   }
 }
 </style>
