@@ -1,5 +1,48 @@
 # MY-VUE 项目相关
 
+## TODO：
+
+1. [x] 下拉刷新
+2. [x] 上拉加载
+3. [x] tab切换
+4. [ ] 文件预览
+5. [ ] 文件上传，图片压缩
+6. [ ] 上按出现多选删除按钮
+7. [ ] 左滑出现单项删除按钮
+8. [ ] better-scroll判断若内层高度大于外层才可以滚动，可是这样的话，如果列表项目高度小于屏幕的话就无法下拉刷新，这是不合理的
+   1. [ ] 解决思路，使用ref获取到内外层的高度，将内层高度在外层的基础上加一像素
+9. [ ] slot使用
+10. [ ] 国际化
+11. [ ] 是否可实现拖拽生成定制页面
+12. [ ] 数据请求进行统一管理
+   1. [ ] 根据判断条件给予赋值
+   2. [ ] 先判断请求参数条件是否改变，若未改变读取本地缓存数据
+
+
+## 各页面介绍
+
+### HomePage: 
+
+- 其他页面的入口页面，页面由脚本生成；
+
+### TodoPage
+
+- 主要侧重于 vux的使用上；
+
+### scrollPage
+
+- 一个完整的页面，包括头部nav, 头部tab, 页面上拉加载更多，下拉刷新，页面loading；
+- 已实现的功能
+  1. [x] 下拉刷新(整个页面)
+  2. [x] 上拉加载更多
+  3. [x] tab切换
+  4. [x] 全局loading
+
+
+### 另写一个页面
+- 与scrollPage的区别在于，下拉刷新是从列表容器开始的，而不是从整个页面
+
+
 ## 项目结构 示例
 
 ```javascript
@@ -38,28 +81,11 @@ src/
 
 ``` 
 
-- src
-  - /views 里面是项目的所有页面，（大驼峰，Page结尾）
-    - HomePage.vue
-    - TodoListPage.vue
-    - 
-  - components 里面是views里面的所有pages对应的组件
-    - /BaseComponents
-      - BaseTopBar.vue
-      - 
-    - /HomeComponents
-      - index.vue
-      - 头尾之类的
-      - /Func
-    - /TodoListComponents
-      - index.vue
-      - 页面的小组件之类的
 
 
+## 代码规范
 
-
-
-## commit规范
+### commit规范
 
 - feat : 新功能
 - fix : 修复bug
@@ -73,11 +99,11 @@ src/
 - chore : 构建过程或辅助工具的变动
 
 
-## 规范
+### 规范
 
 - 完整版请参考 [vue风格指南](https://cn.vuejs.org/v2/style-guide/)
 
-### 组件命名
+#### 组件命名
 1. 组件语义化命名
   - 大驼峰式；
   - 文件命名不宜过长；
@@ -135,7 +161,7 @@ components/
 ```
 
 
-### 组件选项顺序
+#### 组件选项顺序
   - components
   - props
   - data

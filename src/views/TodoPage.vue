@@ -26,47 +26,47 @@ import { TodoList } from "@/components/TodoListComponents";
 import { queryTodoItemsAPI, addTodoItemApi } from "@/request";
 
 export default {
-  name: "",
-  components: {
-    TodoList,
-    BaseTopNav,
-    BaseBottomNav
-  },
-  props: {},
-  data() {
-    return {
-      listData: [],
-      inputTodo: ""
-    };
-  },
-  computed: {},
-  watch: {},
-  created() {
-    this.queryData();
-  },
-  methods: {
-    async queryData() {
-      const res = await queryTodoItemsAPI({ isDone: true });
-      console.log(res);
-      this.$store.commit("getListData", res);
-      this.listData = res;
-    },
-    toHomePage() {
-      this.$router.push("/");
-    },
-    testClick() {
-      console.log(1);
-    },
-    addItem() {
-      const params = {
-        todoText: this.inputTodo,
-        uuid: uuid(),
-        isDone: 0
-      };
+	name: "",
+	components: {
+		TodoList,
+		BaseTopNav,
+		BaseBottomNav
+	},
+	props: {},
+	data() {
+		return {
+			listData: [],
+			inputTodo: ""
+		};
+	},
+	computed: {},
+	watch: {},
+	created() {
+		this.queryData();
+	},
+	methods: {
+		async queryData() {
+			const res = await queryTodoItemsAPI({ isDone: true });
+			console.log(res);
+			this.$store.commit("getListData", res);
+			this.listData = res;
+		},
+		toHomePage() {
+			this.$router.push("/");
+		},
+		testClick() {
+			console.log(1);
+		},
+		addItem() {
+			const params = {
+				todoText: this.inputTodo,
+				uuid: uuid(),
+				isDone: 0
+			};
 
-      addTodoItemApi(params);
-    }
-  }
+			addTodoItemApi(params);
+		}
+	}
 };
 </script>
 

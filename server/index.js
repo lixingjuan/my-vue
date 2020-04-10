@@ -32,15 +32,26 @@ const redirect = ctx => {
 };
 
 const items = async ctx => {
-  const { isComplete } = ctx.request.body;
-  let res;
-  if (isComplete === true) {
-    res = await query(queryTodoItemsIsDoneSQL);
-  } else if (isComplete === false) {
-    res = await query(queryTodoItemsIsNotDoneSQL);
-  } else {
-    res = await query("SELECT * from todolist");
-  }
+  const { isComplete, pageSize = 10, page = 1 } = ctx.request.body;
+  //   收到客户端{pageNo:5,pagesize:10}
+  // select * from table where good_id > (pageNo-1)*pageSize limit pageSize;
+  // select * from table limit (pageNo-1)*pageSize, pageSize;
+  // select * from todolist where isdone=0
+  // const sql = `select * from todolist limit (${page} - 1) * ${pageSize},${pageSize} `;
+
+  const sql = `select * from todolist  WHERE isDone=${isComplete === true ? 0 : 1} limit ${(page -
+    1) *
+    pageSize},${pageSize} `;
+
+  const res = await query(sql);
+  // let res;
+  // if (isComplete === true) {
+  //   res = await query(queryTodoItemsIsDoneSQL);
+  // } else if (isComplete === false) {
+  //   res = await query(queryTodoItemsIsNotDoneSQL);
+  // } else {
+  //   res = await query("SELECT * from todolist");
+  // }
 
   ctx.response.body = res;
 };
