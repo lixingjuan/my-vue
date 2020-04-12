@@ -1,0 +1,19 @@
+## 帮助开发人员维护跨编辑器的开发风格
+## 最顶层的 editorconfig 文件
+# root = true
+
+# [*]
+# charset = utf-8
+
+## 缩进方式
+# indent_style = space
+
+## 缩进字符
+# indent_size = 4
+
+## Unix风格的换行符，换行符以每个文件结尾
+# end_of_line = lf
+# insert_final_newline = true
+
+## 修剪尾随空白 
+# trim_trailing_whitespace = true

@@ -3,7 +3,7 @@ const route = require("koa-route");
 const bodyParser = require("koa-bodyparser");
 
 const { query } = require("./db/index");
-const { queryTodoItemsIsDoneSQL, queryTodoItemsIsNotDoneSQL, addTodoItemSQL } = require("./db/sql");
+// const { queryTodoItemsIsDoneSQL, queryTodoItemsIsNotDoneSQL, addTodoItemSQL } = require("./db/sql");
 const app = new Koa();
 
 // 注意require('koa-router')返回的是函数:
@@ -32,15 +32,14 @@ const redirect = ctx => {
 };
 
 const items = async ctx => {
-  const { isComplete, pageSize = 10, page = 1 } = ctx.request.body;
+  const { isTodo, pageSize = 10, page = 1 } = ctx.request.body;
   //   收到客户端{pageNo:5,pagesize:10}
   // select * from table where good_id > (pageNo-1)*pageSize limit pageSize;
   // select * from table limit (pageNo-1)*pageSize, pageSize;
   // select * from todolist where isdone=0
   // const sql = `select * from todolist limit (${page} - 1) * ${pageSize},${pageSize} `;
 
-  const sql = `select * from todolist  WHERE isDone=${isComplete === true ? 0 : 1} limit ${(page -
-    1) *
+  const sql = `select * from todolist  WHERE isTodo=${isTodo === true ? 1 : 0} limit ${(page - 1) *
     pageSize},${pageSize} `;
 
   const res = await query(sql);

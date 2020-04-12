@@ -8,10 +8,10 @@
       <base-top-nav></base-top-nav>
 
       <ul id="tabTitleWrap">
-        <li @click="changeTab('TODO')">TODO</li>
+        <li @click="changeTab('TODO')" style="{}">TODO</li>
         <li @click="changeTab('DONE')">DONE</li>
       </ul>
-
+      <div></div>
       <ul id="tabListWrap">
         <li v-for="item in listData" :key="item.id" class="item">
           {{ item.id }}+{{ item.todoText }}
@@ -51,22 +51,20 @@ export default {
     this.queryData();
   },
   watch: {
-    isTodo: function() {
-      // 若用户切换了tab,
-      // 1. 立刻改变当前的分页页数
-      // 2. 并清空当前数据列表
-      // 3. 再次初始化 ‘下拉刷新’ ‘上拉加载’ ‘我是有底线的’ '可合并'
-      // 4. 重新发起请求
-      this.currentPage = 1;
-      this.listData = [];
-
-      this.showDropUp = false;
-      this.showDropDown = false;
-      this.showNoMoreData = false;
-      // this.canConcat = true;
-
-      this.queryData();
-    }
+    // isTodo: function() {
+    // 若用户切换了tab,
+    // 1. 立刻改变当前的分页页数
+    // 2. 并清空当前数据列表
+    // 3. 再次初始化 ‘下拉刷新’ ‘上拉加载’ ‘我是有底线的’ '可合并'
+    // 4. 重新发起请求
+    // this.currentPage = 1;
+    // this.listData = [];
+    // this.showDropUp = false;
+    // this.showDropDown = false;
+    // this.showNoMoreData = false;
+    // this.canConcat = true;
+    //   this.queryData();
+    // }
   },
   mounted() {
     this.scrollFn();
@@ -85,7 +83,6 @@ export default {
       const res = await queryTodoItemsAPI(params);
       const { length } = res;
       // 请求成功后，设置 ‘刷新’和‘加载更多’为false
-      console.log("maxScrollLength", this.maxScrollLength);
 
       this.showNoMoreData = length === 0 && this.maxScrollLength;
       // console.log("canConcat", this.canConcat);
@@ -150,7 +147,20 @@ export default {
 
     changeTab(todoOrDone) {
       console.log(todoOrDone);
+
       this.isTodo = todoOrDone === "TODO";
+      // 若用户切换了tab,
+      // 1. 立刻改变当前的分页页数
+      // 2. 并清空当前数据列表
+      // 3. 再次初始化 ‘下拉刷新’ ‘上拉加载’ ‘我是有底线的’ '可合并'
+      // 4. 重新发起请求
+      this.currentPage = 1;
+      this.listData = [];
+      this.showDropUp = false;
+      this.showDropDown = false;
+      this.showNoMoreData = false;
+      this.canConcat = true;
+      this.queryData();
     }
   }
 };

@@ -7,22 +7,23 @@
 // const vuxLoader = require("vux-loader");
 
 module.exports = {
-	devServer: {
-		proxy: "http://localhost:4000" // 配置跨域代理
-	},
-	css: {
-		loaderOptions: {
-			less: {
-				javascriptEnabled: true
-				// prependData: `@import "@/styles/global.less";`
-			},
-			scss: {
-				prependData: "@import \"@/styles/global.scss\";"
-			}
-		}
-	},
-	configureWebpack: config => {
-		// 修复HMR失效问题？？？是为啥？
-		config.resolve.symlinks = true;
-	}
+  devServer: {
+    proxy: "http://localhost:4000" // 配置跨域代理
+  },
+  css: {
+    sourceMap: true, // 是否开始sourceMap
+    loaderOptions: {
+      less: {
+        javascriptEnabled: true
+        // prependData: `@import "@/styles/global.less";`
+      },
+      scss: {
+        prependData: "@import \"@/styles/global.scss\";"
+      }
+    }
+  },
+  configureWebpack: config => {
+    // 修复HMR失效问题？？？是为啥？
+    config.resolve.symlinks = true;
+  }
 };
