@@ -27,7 +27,7 @@
 
 ### TodoPage
 
-- 主要侧重于 vux的使用上；
+- 主要侧重于 vuex的使用上；
 
 ### scrollPage
 
