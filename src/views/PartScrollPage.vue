@@ -85,8 +85,8 @@ export default {
     this.queryData();
   },
   mounted() {
-    console.log(1);
-    console.log(this.$refs.bscrollContainer);
+    this.scrollFn();
+    // console.log("ce", this.$refs.bscrollContainer.style);
   },
   watch: {
     // isTodo: function() {
@@ -104,10 +104,7 @@ export default {
     //   this.queryData();
     // }
   },
-  mounted() {
-    this.scrollFn();
-    console.log("ce", this.$refs.bscrollContainer.style);
-  },
+
   components: {
     BaseTopNav,
     TodoListWrap,
@@ -198,6 +195,9 @@ export default {
 
     /* 若用户点击了上方的tab */
     changeTab(todoOrDoneComponent) {
+      console.log("ce", this.$refs.bscrollContainer);
+      console.log("ce", this.$refs.bscrollContainer.offsetHeight);
+
       console.log(todoOrDoneComponent);
       // 1. 改变 正在显示组件
       this.currentTabComponent = todoOrDoneComponent;
