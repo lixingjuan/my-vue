@@ -1,3 +1,4 @@
+import { debounce } from "./debounce";
 /* 所有的公共方法 */
 
 /**
@@ -14,4 +15,4 @@ const colorHexToRgb = function() {};
  */
 const colorRgbToHex = function() {};
 
-export { colorHexToRgb, colorRgbToHex };
+export { colorHexToRgb, colorRgbToHex, debounce };

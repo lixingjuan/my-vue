@@ -2,11 +2,13 @@
   <div>
     <base-top-nav></base-top-nav>
     <div id="page_body">
-      <div><a href="/DemoPage">DemoPage</a></div> 
- <div><a href="/HomePage">HomePage</a></div> 
- <div><a href="/PartScrollPage">PartScrollPage</a></div> 
- <div><a href="/ScrollPage">ScrollPage</a></div> 
- <div><a href="/TodoPage">TodoPage</a></div>
+      <div><a href="/DebouncePage">DebouncePage</a></div>
+      <div><a href="/DemoPage">DemoPage</a></div>
+      <div><a href="/HomePage">HomePage</a></div>
+      <div><a href="/PartScrollPage">PartScrollPage</a></div>
+      <div><a href="/ScrollPage">ScrollPage</a></div>
+      <div><a href="/ThrottlePage">ThrottlePage</a></div>
+      <div><a href="/TodoPage">TodoPage</a></div>
     </div>
     <base-bottom-nav></base-bottom-nav>
   </div>

@@ -3,10 +3,12 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
+import DebouncePage from "@/views/DebouncePage.vue";
 import DemoPage from "@/views/DemoPage.vue";
 import HomePage from "@/views/HomePage.vue";
 import PartScrollPage from "@/views/PartScrollPage.vue";
 import ScrollPage from "@/views/ScrollPage.vue";
+import ThrottlePage from "@/views/ThrottlePage.vue";
 import TodoPage from "@/views/TodoPage.vue";
 
 const routes = [
@@ -14,6 +16,11 @@ const routes = [
     path: "/",
     name: "homepage",
     component: HomePage
+  },
+  {
+    path: "/DebouncePage",
+    name: "debouncepage",
+    component: DebouncePage
   },
   {
     path: "/DemoPage",
@@ -34,6 +41,11 @@ const routes = [
     path: "/ScrollPage",
     name: "scrollpage",
     component: ScrollPage
+  },
+  {
+    path: "/ThrottlePage",
+    name: "throttlepage",
+    component: ThrottlePage
   },
   {
     path: "/TodoPage",

@@ -1,14 +1,6 @@
 <template>
   <div id="top-nav-wrap">
-    <x-header
-      :title="title"
-      :leftOptions="leftOptionsProps"
-      @header-background-color="
-        'red';
-
-
-      "
-    ></x-header>
+    <slot></slot>
   </div>
 </template>
 
@@ -31,11 +23,15 @@ export default {
 
 <style scoped lang="scss">
 #top-nav-wrap {
-  //   width: 100%;
+  width: 100%;
   height: 8%;
-  //   background-color: #888;
-  //   position: fixed;
-  //   top: 0;
+  background-color: #619cf3;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  // position: fixed;
+  // top: 0;
   //   line-height: 40px;
 }
 </style>

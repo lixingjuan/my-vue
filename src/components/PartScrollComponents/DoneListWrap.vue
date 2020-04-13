@@ -1,5 +1,5 @@
 <template>
-  <ul id="tabDoneListWrap">
+  <ul id="tabDoneListWrap" ref="bscrollList">
     <li v-for="(item, index) in doneListDataProps" :key="item.id" class="item">
       index:{{ index }}+id:{{ item.id }}
     </li>
