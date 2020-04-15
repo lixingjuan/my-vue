@@ -1,0 +1,89 @@
+.list {
+  margin-top: 46px;
+  /*margin-top: 2px;*/
+  .list-content {
+    .list-header {
+      background: #ffffff;
+      box-shadow: 0 1px 0 0 #dce5ec;
+      width: 100%;
+      height: 44px;
+      display: flex;
+      position: relative;
+      .list-header-item {
+        display: block;
+        -ms-flex: 1;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background: linear-gradient(180deg, #e5e5e5, #e5e5e5, rgba(229, 229, 229, 0)) bottom left no-repeat;
+        background-size: 100% 1px;
+        font-size: 0.95rem !important;
+        text-align: center;
+        line-height: 44px;
+        color: #666;
+        font-size: $font-size-bg;
+        color: #454545;
+        letter-spacing: -0.1px;
+        text-align: center;
+      }
+      .list-ink-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        background-color: #d2181a;
+        height: 4px;
+      }
+      .list-ink-bar-transition-backward {
+        transition: right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+      }
+    }
+    .search-approval-list {
+      padding: 3px 2px 3px 2px;
+      // background-color: #f74c31;
+      .search-button {
+        border: 1px solid #e6ecf0;
+        border-radius: 5px;
+        background: white;
+        height: 35px; //35
+        line-height: 30px; //35
+        text-align: center;
+      }
+    }
+    .list-scroll {
+      position: absolute;
+      top: 88px;
+      /*top: 44px;*/
+      bottom: 1px;
+      width: 100%;
+      .iscroll {
+        height: 100%;
+      }
+      .account-list {
+        padding: 10px 10px;
+      }
+    }
+    .add-item {
+      display: block;
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      border-radius: 30px;
+      background: #d21810;
+      margin-left: 42%;
+      bottom: 50px;
+      text-align: center;
+      line-height: 60px;
+      color: white;
+      box-shadow: 0 3px 4px 0 #a4bac9;
+      img {
+        margin-top: 12px;
+        height: 26px;
+        width: 26px;
+        -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 350ms;
+        transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 350ms;
+      }
+    }
+  }
+}

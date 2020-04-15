@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div id="pageContrainer">
     <base-top-nav></base-top-nav>
-    <div id="page_body">
-      <div><a href="/DebouncePage">DebouncePage</a></div>
-      <div><a href="/DemoPage">DemoPage</a></div>
-      <div><a href="/HomePage">HomePage</a></div>
-      <div><a href="/PartScrollPage">PartScrollPage</a></div>
-      <div><a href="/ScrollPage">ScrollPage</a></div>
-      <div><a href="/ThrottlePage">ThrottlePage</a></div>
-      <div><a href="/TodoPage">TodoPage</a></div>
-    </div>
+    <ul id="page_body">
+      <li><a href="/DebouncePage">DebouncePage</a></li> 
+ <li><a href="/DemoPage">DemoPage</a></li> 
+ <li><a href="/HomePage">HomePage</a></li> 
+ <li><a href="/PartScrollPage">PartScrollPage</a></li> 
+ <li><a href="/ScrollPage">ScrollPage</a></li> 
+ <li><a href="/ThrottlePage">ThrottlePage</a></li> 
+ <li><a href="/TodoPage">TodoPage</a></li>
+    </ul>
     <base-bottom-nav></base-bottom-nav>
   </div>
 </template>
@@ -34,3 +34,22 @@ export default {
   methods: {}
 };
 </script>
+
+<style scoped lang="scss">
+#pageContrainer {
+  height: 100%;
+  background-color: #f7f7f7;
+}
+#page_body {
+  li {
+    width: 95%;
+    height: 3rem;
+    margin: 0.5rem auto;
+    border: 0.1rem solid #b2abe4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+  }
+}
+</style>

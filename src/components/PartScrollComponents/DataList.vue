@@ -1,6 +1,6 @@
 <template>
-  <ul id="tabTodoListWrap" ref="bscrollList">
-    <li v-for="(item, index) in todoListDataProps" :key="item.id" class="item">
+  <ul id="tabDataListWrap" ref="bscrollDataList">
+    <li v-for="(item, index) in ListDataProps" :key="item.id" class="item">
       index:{{ index }}+id:{{ item.id }}
     </li>
   </ul>
@@ -11,7 +11,7 @@ export default {
   name: "",
   components: {},
   props: {
-    todoListDataProps: {
+    ListDataProps: {
       type: Array,
       required: true
     }
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#tabTodoListWrap {
+#tabDataListWrap {
   background-color: #f7f7f7;
   .item {
     width: 95%;

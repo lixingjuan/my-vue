@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div id="pageContrainer">
     <base-top-nav></base-top-nav>
-    <div id="page_body">
+    <ul id="page_body">
       HOME_CONTRAINER
-    </div>
+    </ul>
     <base-bottom-nav></base-bottom-nav>
   </div>
 </template>
@@ -28,3 +28,22 @@ export default {
   methods: {}
 };
 </script>
+
+<style scoped lang="scss">
+#pageContrainer {
+  height: 100%;
+  background-color: #f7f7f7;
+}
+#page_body {
+  li {
+    width: 95%;
+    height: 3rem;
+    margin: 0.5rem auto;
+    border: 0.1rem solid #b2abe4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+  }
+}
+</style>

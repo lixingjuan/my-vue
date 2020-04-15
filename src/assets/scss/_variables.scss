@@ -1,0 +1,45 @@
+/*
+* scss变量集中储存文件
+*/
+
+//1rem单位大小
+html {
+  font-size: 16px;
+}
+
+//页面字体大小(注意css中字体大小单位使用rem)
+//最小字体 12px  0.7rem
+$font-size-sm: 0.7rem;
+//中等字体 14px  0.85rem
+$font-size-md: 0.85rem;
+//最大字体 16px  1rem
+$font-size-bg: 1rem;
+
+//字体类型
+//PingFangSC-Regular
+$font-type-main: PingFangSC-Regular;
+//PingFangSC-Medium
+$font-type-second: PingFangSC-Medium;
+
+$background-color: #FFCC33;
+//主题黄 #FECB45
+$color-main: #FECB45;
+//字体颜色
+//黄色字体 #FF9100
+$font-color-yellow: #FF9100;
+//绿色字体 #8DC635
+$font-color-gree: #8DC635;
+//蓝色字体 #1E7DD7
+$font-color-blue: #1E7DD7;
+//红色字体 #F15353
+$font-color-red: #F15353;
+//灰色字体（较深）#4A4A4A
+$font-color-gray-1: #4A4A4A;
+//灰色字体（其次）#6D7A80
+$font-color-gray-2: #6D7A80;
+//灰色字体（较浅）#9B9B9B
+$font-color-gray-3: #9B9B9B;
+//灰色字体（最浅）#D2D2D2
+$font-color-gray-4: #D2D2D2;
+
+

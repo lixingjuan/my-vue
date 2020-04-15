@@ -1,6 +1,6 @@
 <template>
   <div id="top-nav-wrap">
-    <slot></slot>
+    <slot>头部</slot>
   </div>
 </template>
 
@@ -25,7 +25,8 @@ export default {
 #top-nav-wrap {
   width: 100%;
   height: 8%;
-  background-color: #619cf3;
+  background-color: #1252b1;
+  color: #fff;
   display: flex;
   align-items: center;
   text-align: center;

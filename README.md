@@ -1,3 +1,9 @@
+# 分支介绍
+
+1. master: 没有任何问题
+2. feat-名字: 新功能/新页面开发完成之后merge到master，并删除该分支
+
+
 # MY-VUE 项目相关
 
 ## TODO：

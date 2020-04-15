@@ -73,7 +73,7 @@ const generateHome = function generateRouter() {
   const HOME_CONTRAINER = pagesArr
     .map(
       item =>
-        `<div><a href="/${path.basename(item, ".vue")}">${path.basename(item, ".vue")}</a></div>`
+        `<li><a href="/${path.basename(item, ".vue")}">${path.basename(item, ".vue")}</a></li>`
     )
     .join(" \n ");
 
