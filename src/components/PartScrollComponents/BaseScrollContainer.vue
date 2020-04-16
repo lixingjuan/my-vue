@@ -48,8 +48,7 @@ export default {
       showPullingDown: false, // 用户正在下拉 && 高度大于设定值
       showNoMoreData: false, // 没有更多数据
       showPageloading: false, // 页面全局loading
-      maxScrollLength: 0, // 页面最大下拉高度
-      innerShorterOuter: true // 列表的高度是否大于滚动外层的高度
+      innerShorterOuter: false // 列表的高度是否大于滚动外层的高度
     };
   },
   computed: {},
@@ -57,15 +56,15 @@ export default {
   props: {},
   created() {},
   mounted() {
-    // this.scrollFn();
+    this.scrollFn();
   },
   updated() {
-    // console.log("触发了更新");
-    // const bscrollHeight = this.$refs.bscroll.offsetHeight;
-    // const bscrollInnerContainer = this.$refs.bscrollContainer.offsetHeight;
-    // console.log(bscrollHeight);
-    // console.log(bscrollInnerContainer);
-    // // TODO: 这里获取的 this.$refs.bscrollListComponent.$refs.bscrollDataList 为什么没有子DOM节点？？？
+    console.log("触发了更新");
+    const bscrollHeight = this.$refs.bscroll.offsetHeight;
+    const bscrollInnerContainer = this.$refs.bscrollContainer.offsetHeight;
+    console.log(bscrollHeight);
+    console.log(bscrollInnerContainer);
+    // TODO: 这里获取的 this.$refs.bscrollListComponent.$refs.bscrollDataList 为什么没有子DOM节点？？？
     // this.innerShorterOuter = bscrollInnerContainer <= bscrollHeight;
   },
   computed: {
