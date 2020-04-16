@@ -4,31 +4,31 @@
       ref="bscrollContainer"
       :class="{ 'bscroll-container': true, innerShorterOuter: innerShorterOuter }"
     >
-      <p id="drop-down" v-show="dataStatusShowObj.showPullingDown">
+      <p id="drop-down" v-show="showPullingDown">
         <van-loading color="#1989fa" size="24">松手刷新数据</van-loading>
       </p>
-
+      <slot></slot>
       <!-- TODO -->
-      <data-list
+      <!-- <data-list
         class="tab"
         ref="bscrollListComponent"
         :ListDataProps="todoListData"
         v-show="currentTabComponent === 'TODO'"
-      />
+      /> -->
 
       <!-- DONE -->
-      <data-list
+      <!-- <data-list
         class="tab"
         ref="bscrollListComponent"
         :ListDataProps="doneListData"
         v-show="currentTabComponent === 'DONE'"
-      />
+      /> -->
 
-      <p id="drop-up" v-show="dataStatusShowObj.showPullingUp">
+      <p id="drop-up" v-show="showPullingUp">
         <van-loading color="#1989fa" size="24">加载更多</van-loading>
       </p>
 
-      <p id="noMoreData" v-show="dataStatusShowObj.showNoMoreData">我是有底线的...</p>
+      <p id="noMoreData" v-show="showNoMoreData">我是有底线的...</p>
     </div>
   </div>
 </template>
@@ -36,20 +36,43 @@
 <script>
 import BScroll from "better-scroll";
 
-import { DataList } from "@/components/PartScrollComponents";
-
 export default {
   name: "",
   components: {
-    DataList
+    // DataList
   },
   props: {},
   data() {
-    return {};
+    return {
+      showPullingUp: false, // 用户正在上拉 && 高度大于设定值
+      showPullingDown: false, // 用户正在下拉 && 高度大于设定值
+      showNoMoreData: false, // 没有更多数据
+      showPageloading: false, // 页面全局loading
+      maxScrollLength: 0, // 页面最大下拉高度
+      innerShorterOuter: true // 列表的高度是否大于滚动外层的高度
+    };
   },
   computed: {},
   watch: {},
+  props: {},
   created() {},
+  mounted() {
+    // this.scrollFn();
+  },
+  updated() {
+    // console.log("触发了更新");
+    // const bscrollHeight = this.$refs.bscroll.offsetHeight;
+    // const bscrollInnerContainer = this.$refs.bscrollContainer.offsetHeight;
+    // console.log(bscrollHeight);
+    // console.log(bscrollInnerContainer);
+    // // TODO: 这里获取的 this.$refs.bscrollListComponent.$refs.bscrollDataList 为什么没有子DOM节点？？？
+    // this.innerShorterOuter = bscrollInnerContainer <= bscrollHeight;
+  },
+  computed: {
+    currentTabComponent: function() {
+      return this.$store.state.ModulePartScroll.currentTabComponent;
+    }
+  },
   methods: {
     scrollFn() {
       this.$nextTick(() => {
@@ -70,17 +93,17 @@ export default {
 
           if (pos.y > 50) {
             console.log("此时显示下拉箭头");
-            this.dataStatusShowObj.showPullingDown = true;
+            this.showPullingDown = true;
           } else {
-            this.dataStatusShowObj.showPullingDown = false;
+            this.showPullingDown = false;
           }
 
           // 显示加载更多
           // 当前 ‘最大滚动高度’ 为真 && ‘我是有底线的’为假
           if (pos.y - this.scroll.maxScrollY < 20 && !this.showNoMoreData && this.maxScrollLength) {
-            this.dataStatusShowObj.showPullingUp = true;
+            this.showPullingUp = true;
           } else {
-            this.dataStatusShowObj.showPullingUp = false;
+            this.showPullingUp = false;
           }
         });
 
@@ -93,11 +116,16 @@ export default {
             // 1. 置1分页参数
             this.currentPage = 1;
             // 2. 清空当前 '显示组件' 数据源
-            this.currentTabComponent === "TODO"
+
+            // this.currentTabComponent === "TODO"
+            //   ? (this.todoListData = [])
+            //   : (this.doneListData = []);
+            this.$store.state.ModulePartScroll.currentTabComponent === "TODO"
               ? (this.todoListData = [])
               : (this.doneListData = []);
+
             // 3. 隐藏 ‘上拉加载更多’ 提示
-            this.dataStatusShowObj.showPullingDown = false;
+            this.showPullingDown = false;
             // 4. 默认显示全页面loading
             this.pageLoading = true;
             // 5. 调用请求数据接口
@@ -114,7 +142,7 @@ export default {
             // 3. 调用查询接口
             this.queryData();
             // 4. 隐藏加载更多loading
-            this.dataStatusShowObj.showPullingUp = false;
+            this.showPullingUp = false;
           } else {
             console.log("不满足请求条件");
           }
@@ -127,4 +155,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+#tabListWrap {
+  height: 92%;
+  // display: flex;
+  // flex-direction: column;
+  // .bscroll {
+  //   height: 100%;
+  // }
+  .innerShorterOuter {
+    height: 101%;
+  }
+  #noMoreData {
+    height: 10%;
+  }
+}
+</style>

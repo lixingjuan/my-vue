@@ -1,15 +1,15 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import moduleTodo from "./moduleTodo";
-import modulePartScroll from "./modulePartScroll";
+import ModuleTodo from "./ModuleTodo";
+import ModulePartScroll from "./ModulePartScroll";
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    moduleTodo,
-    modulePartScroll
+    ModuleTodo,
+    ModulePartScroll
   },
   state: {
     todos: []
