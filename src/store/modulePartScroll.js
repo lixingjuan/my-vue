@@ -1,5 +1,5 @@
 import { queryTodoItemsAPI } from "@/request";
-// import { debounce } from "@/utils/index.js";
+import { debounce } from "@/utils";
 
 const ModulePartScroll = {
   state: {
@@ -10,7 +10,7 @@ const ModulePartScroll = {
   },
 
   actions: {
-    async queryDataAction({ commit, state }) {
+    queryDataAction: debounce(async function({ commit, state }) {
       const isTodo = state.currentTabComponent === "TODO"; // 当前显示组件是否是 ‘TodoListWrap’
       // 1. 根据当前显示组件设置请求参数
       const params = {
@@ -29,7 +29,7 @@ const ModulePartScroll = {
         commit("setPageLoading", false);
       }
       commit("setListData", res);
-    }
+    })
   },
 
   mutations: {
@@ -39,7 +39,11 @@ const ModulePartScroll = {
     },
     setListData(state, listData) {
       console.log("触发了state", listData);
-      state.listData = listData;
+      state.listData = [...state.listData, ...listData];
+    },
+    clearListData(state, listData) {
+      console.log("触发了state", listData);
+      state.listData = [];
     },
     setPageLoading(state, pageLoading) {
       console.log("触发了state", pageLoading);

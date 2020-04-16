@@ -105,11 +105,8 @@ export default {
             // this.currentPage = 1;
             this.$store.commit("setCurrentPage", 1);
 
-            // 2. 清空当前 '显示组件' 数据源
-
-            this.$store.state.ModulePartScroll.currentTabComponent === "TODO"
-              ? (this.todoListData = [])
-              : (this.doneListData = []);
+            // 2. 清空数据源
+            this.$store.commit("clearListData");
 
             // 3. 隐藏 ‘上拉加载更多’ 提示
             this.showPullingDown = false;
@@ -123,7 +120,11 @@ export default {
 
           // 【上拉加载】
           //  用户【上拉】高度大于最大滑动高度20 && 当前未显示没有更多数据 则请求更多数据
-          if (pos.y - this.scroll.maxScrollY < 20 && !this.showNoMoreData) {
+          if (pos.y && pos.y - this.scroll.maxScrollY < 20 && !this.showNoMoreData) {
+            console.log(pos.y);
+            console.log(this.scroll.maxScrollY);
+            console.log("pos.y - this.scroll.maxScrollY", pos.y - this.scroll.maxScrollY);
+            console.log("触发了上拉加载");
             // 请求更多数据 步骤
             // 1. 设置当前分页参数+1
             this.$store.commit("setCurrentPage", this.currentPage + 1);

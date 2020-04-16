@@ -77,20 +77,20 @@ export default {
       this.$store.commit("setCurrentTabComponent", todoOrDoneComponent);
 
       // 3. 立刻改变当前的分页页数
-      this.currentPage = 1;
+      this.$store.commit("setCurrentPage", 1);
 
       // 4. 清空 '当前显示组件的数据列表'
-      this.currentTabComponent === "TODO" ? (this.todoListData = []) : (this.doneListData = []);
+      this.$store.commit("clearListData");
 
-      // 5. 再次初始化 ‘下拉刷新’ ‘上拉加载’ ‘我是有底线的’ '可合并' 的 真假
-      this.dataStatusShowObj = {
-        ...this.dataStatusShowObj, // 以防后来又为该对象加入数据
-        showPullingUp: false, // 用户正在上拉 && 高度大于设定值
-        showPullingDown: false, // 用户正在下拉 && 高度大于设定值
-        showNoMoreData: false, // 没有更多数据
-        showPageloading: false, // 页面全局loading
-        maxScrollLength: 0 // 页面最大下拉高度
-      };
+      // // 5. 再次初始化 ‘下拉刷新’ ‘上拉加载’ ‘我是有底线的’ '可合并' 的 真假
+      // this.dataStatusShowObj = {
+      //   ...this.dataStatusShowObj, // 以防后来又为该对象加入数据
+      //   showPullingUp: false, // 用户正在上拉 && 高度大于设定值
+      //   showPullingDown: false, // 用户正在下拉 && 高度大于设定值
+      //   showNoMoreData: false, // 没有更多数据
+      //   showPageloading: false, // 页面全局loading
+      //   maxScrollLength: 0 // 页面最大下拉高度
+      // };
 
       // 6. 默认显示全页面loading
       // this.pageLoading = true;
