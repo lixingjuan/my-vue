@@ -7,7 +7,9 @@ import router from "./router";
 import "reset-css";
 
 /* START：vant设置 */
-import { Loading, Toast } from "vant";
+import { Loading, Toast, Icon } from "vant";
+
+Vue.use(Icon);
 Vue.use(Loading);
 
 Vue.prototype.$Toast = Toast;

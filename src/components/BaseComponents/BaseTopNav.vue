@@ -1,6 +1,10 @@
 <template>
   <div id="top-nav-wrap">
-    <slot>头部</slot>
+    <p id="backArrowLeft"><van-icon name="arrow-left" /></p>
+    <p id="backTitle"><slot>头部</slot></p>
+    <p id="backArrowRight" :class="{ showArrowTitleRight: showArrowTitleRight }">
+      <van-icon name="arrow " />
+    </p>
   </div>
 </template>
 
@@ -12,10 +16,16 @@ export default {
       leftOptionsProps: {
         showBack: true,
         showMore: true,
-        backText: ""
+        backText: "",
+        showArrowArrowRight: this.arrowArrowRight === "" ? false : this.arrowArrowRight
       },
       title: "hahah"
     };
+  },
+  props: {
+    arrowArrowRight: {
+      type: Boolean
+    }
   },
   components: {}
 };
@@ -30,9 +40,23 @@ export default {
   display: flex;
   align-items: center;
   text-align: center;
-  justify-content: center;
-  // position: fixed;
-  // top: 0;
-  //   line-height: 40px;
+  justify-content: space-between;
+  p {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  #backArrowLeft {
+    padding-left: 1rem;
+  }
+  #backArrow {
+  }
+  #backArrowRight {
+    padding-right: 1rem;
+    visibility: hidden;
+  }
+  // .this.arrowTitleRight {
+  //   visibility: show;
+  // }
 }
 </style>
