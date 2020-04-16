@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { DataList, BaseScrollContainer } from "@/components/PartScrollComponents";
 
 export default {
@@ -48,14 +49,11 @@ export default {
       doneListData: []
     };
   },
-  computed: {
-    currentTabComponent: function() {
-      return this.$store.state.ModulePartScroll.currentTabComponent;
-    },
-    listData: function() {
-      return this.$store.state.ModulePartScroll.listData;
-    }
-  },
+  computed: mapState({
+    currentTabComponent: state => state.ModulePartScroll.currentTabComponent,
+    listData: state => state.ModulePartScroll.listData
+  }),
+
   watch: {
     listData: function() {
       switch (this.currentTabComponent) {
@@ -71,6 +69,7 @@ export default {
   created() {},
   methods: {
     changeTab(todoOrDoneComponent) {
+      console.log("this.currentTabComponent", this.currentTabComponent);
       // 1. 显示全局loading
       this.pageLoading = true;
 
@@ -96,7 +95,8 @@ export default {
       // 6. 默认显示全页面loading
       // this.pageLoading = true;
       // 7.设置防抖，触发父组件重新发起请求
-      this.$emit("queryDataEvent");
+      // this.$emit("queryDataEvent");
+      this.$store.dispatch("queryDataAction");
     }
   }
 };

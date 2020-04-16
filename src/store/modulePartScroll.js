@@ -1,15 +1,34 @@
+import { queryTodoItemsAPI } from "@/request";
+// import { debounce } from "@/utils/index.js";
+
 const ModulePartScroll = {
   state: {
     listData: [], // 列表所有数据
+    pageLoading: true, // 页面loading
+    currentPage: 1, //
     currentTabComponent: "TODO" // 当前显示组件
   },
 
   actions: {
-    // 在模块内部的action，局部状态通过context.state 暴漏出来, 根结点状态为context.rootState
-    fromBGetRootState({ state, getters, rootState }) {
-      window.console.log("在模块B action 打印根结点的state", state);
-      window.console.log("在模块B action 打印根结点的getters", getters);
-      window.console.log("在模块B action 打印根结点的rootState", rootState);
+    async queryDataAction({ commit, state }) {
+      const isTodo = state.currentTabComponent === "TODO"; // 当前显示组件是否是 ‘TodoListWrap’
+      // 1. 根据当前显示组件设置请求参数
+      const params = {
+        isTodo,
+        page: state.currentPage,
+        pageSize: 10
+      };
+      let res;
+      // 2. 进行接口调用并捕获结果，隐藏页面全局loading
+      try {
+        res = await queryTodoItemsAPI(params);
+      } catch (err) {
+        this.$Toast(err || "请求出错");
+      } finally {
+        // 设置页面全局loading 为false
+        commit("setPageLoading", false);
+      }
+      commit("setListData", res);
     }
   },
 
@@ -21,6 +40,16 @@ const ModulePartScroll = {
     setListData(state, listData) {
       console.log("触发了state", listData);
       state.listData = listData;
+    },
+    setPageLoading(state, pageLoading) {
+      console.log("触发了state", pageLoading);
+      state.pageLoading = pageLoading;
+      console.log("state.pageLoading", state.pageLoading);
+    },
+    setCurrentPage(state, currentPage) {
+      console.log("触发了state", currentPage);
+      state.currentPage = currentPage;
+      console.log("state.currentPage", state.currentPage);
     }
   }
 };

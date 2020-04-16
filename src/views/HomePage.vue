@@ -2,13 +2,11 @@
   <div id="pageContrainer">
     <base-top-nav></base-top-nav>
     <ul id="page_body">
-      <li><a href="/DebouncePage">DebouncePage</a></li> 
- <li><a href="/DemoPage">DemoPage</a></li> 
- <li><a href="/HomePage">HomePage</a></li> 
- <li><a href="/PartScrollPage">PartScrollPage</a></li> 
- <li><a href="/ScrollPage">ScrollPage</a></li> 
- <li><a href="/ThrottlePage">ThrottlePage</a></li> 
- <li><a href="/TodoPage">TodoPage</a></li>
+      <li><a href="/DebouncePage">DebouncePage</a></li>
+      <li><a href="/HomePage">HomePage</a></li>
+      <li><a href="/PartScrollPage">PartScrollPage</a></li>
+      <li><a href="/ScrollPage">ScrollPage</a></li>
+      <li><a href="/TodoPage">TodoPage</a></li>
     </ul>
     <base-bottom-nav></base-bottom-nav>
   </div>
