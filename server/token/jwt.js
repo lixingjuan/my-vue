@@ -46,10 +46,12 @@ class Jwt {
     let res;
     try {
       let result = jwt.verify(token, cert, { algorithms: ["RS256"] }) || {};
+      console.log("token校验的结果", result);
       let { exp = 0 } = result,
         current = Math.floor(Date.now() / 1000);
       if (current <= exp) {
-        res = result.data || {};
+        // res = result.data || {};
+        res = "success";
       }
     } catch (e) {
       res = "err";

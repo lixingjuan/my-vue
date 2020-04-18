@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { baseURL, loginURL } from "./ComUrls";
-import { docCookies } from "@/utils/index.js";
+import { docCookies } from "@/utils";
 
 // axios.defaults.baseURL = baseURL;
 
@@ -11,11 +11,15 @@ axios.defaults.timeout = 3000;
 axios.interceptors.request.use(
   config => {
     console.log(config);
-    /* if (config.url !== loginURL) {
+
+    if (config.url !== loginURL) {
       console.log("进入判断");
       const token = docCookies.getItem("token");
       config.headers.common.Authorization = token;
-    } */
+    } else {
+      config.headers.common.Authorization = "login";
+    }
+    return config;
   },
   error => {
     console.log("request Error", error);

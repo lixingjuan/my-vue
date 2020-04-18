@@ -4,6 +4,7 @@ const JwtUtil = require("../token/jwt");
 
 const login = async ctx => {
   // console.log(ctx.request.body);
+  console.log("login的请求报文", ctx.req);
   let resBody;
   const { username, password } = ctx.request.body;
   /**
@@ -16,8 +17,8 @@ const login = async ctx => {
 
   const res = await query(`SELECT password 
         FROM users
-        WHERE username='12'`);
-
+        WHERE username='${username}'`);
+  console.log("login的查询报文", res);
   if (!res) {
     resBody = {
       success: "false",

@@ -59,10 +59,15 @@ export default {
         password: "guagua"
       };
       const res = await loginApi(params);
-      // const { token } = res;
-      // document.setCookie("token", token);
-      // docCookies.setItem(token, token);
-      console.log(res);
+      const { token, success, errorMessage } = res;
+      if (success) {
+        docCookies.setItem("token", token);
+        this.$router.push({
+          path: "/HomePage"
+        });
+      } else {
+        this.$Toast(errorMessage);
+      }
     }
   }
 };
