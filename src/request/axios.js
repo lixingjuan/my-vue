@@ -1,13 +1,26 @@
 import axios from "axios";
 
-import { baseURL } from "./ComUrls";
+import { baseURL, loginURL } from "./ComUrls";
+import { docCookies } from "@/utils/index.js";
 
 // axios.defaults.baseURL = baseURL;
 
 // 请求超时时间
 axios.defaults.timeout = 3000;
-
-// axios.interceptors.request.use(config => { }, error => { })
+// 请求拦截器
+axios.interceptors.request.use(
+  config => {
+    console.log(config);
+    /* if (config.url !== loginURL) {
+      console.log("进入判断");
+      const token = docCookies.getItem("token");
+      config.headers.common.Authorization = token;
+    } */
+  },
+  error => {
+    console.log("request Error", error);
+  }
+);
 
 // 响应拦截器
 axios.interceptors.response.use(
@@ -80,6 +93,7 @@ function get(url, params) {
       });
   });
 }
+
 /**
  * post方法，对应post请求
  * @param {String} url [请求的url地址]

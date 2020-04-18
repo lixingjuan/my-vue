@@ -7,17 +7,20 @@ import router from "./router";
 import "reset-css";
 
 /* START：vant设置 */
-import { Loading, Toast, Icon } from "vant";
+import { Loading, Toast, Icon, Form, Field, Button } from "vant";
 
 Vue.use(Icon);
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Button);
 Vue.use(Loading);
 
 Vue.prototype.$Toast = Toast;
 /*  END：vant设置 */
 
 /* antd设置 */
-import { Button, message, notification } from "ant-design-vue";
-Vue.component(Button.name, Button);
+import { message, notification } from "ant-design-vue";
+// Vue.component(Button.name, Button);
 
 // START：全局配置
 notification.config({

@@ -35,7 +35,6 @@ const generateRouter = function generateRouter() {
   }
 `;
   });
-  console.log("routes", routes);
 
   const targetRouteString = `
 import Vue from "vue";
@@ -48,8 +47,8 @@ ${importArr}
 const routes = [
   {
     path: "/",
-    name: 'homepage',
-    component: HomePage,
+    name: 'LoginPage',
+    component: LoginPage,
   },
   ${routes}
 ]

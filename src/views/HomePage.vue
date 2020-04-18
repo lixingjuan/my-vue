@@ -1,14 +1,15 @@
 <template>
-  <div id="pageContrainer">
-    <base-top-nav></base-top-nav>
+  <div id="pageContainer">
+    <base-top-nav :showBackArrowLeft="true"></base-top-nav>
     <ul id="page_body">
-      <li><a href="/AntdDemoPage">AntdDemoPage</a></li> 
- <li><a href="/DebounceThrottlePage">DebounceThrottlePage</a></li> 
- <li><a href="/FileUploadPage">FileUploadPage</a></li> 
- <li><a href="/HomePage">HomePage</a></li> 
- <li><a href="/PartScrollPage">PartScrollPage</a></li> 
- <li><a href="/ScrollPage">ScrollPage</a></li> 
- <li><a href="/TodoPage">TodoPage</a></li>
+      <li><a href="/AntdDemoPage">AntdDemoPage</a></li>
+      <li><a href="/DebounceThrottlePage">DebounceThrottlePage</a></li>
+      <li><a href="/FileUploadPage">FileUploadPage</a></li>
+      <li><a href="/HomePage">HomePage</a></li>
+      <li><a href="/LoginPage">LoginPage</a></li>
+      <li><a href="/PartScrollPage">PartScrollPage</a></li>
+      <li><a href="/ScrollPage">ScrollPage</a></li>
+      <li><a href="/TodoPage">TodoPage</a></li>
     </ul>
     <base-bottom-nav></base-bottom-nav>
   </div>
@@ -36,7 +37,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#pageContrainer {
+#pageContainer {
   height: 100%;
   background-color: #f7f7f7;
 }

@@ -1,8 +1,9 @@
 /* 所有的接口调用api都从这里导出 */
 import { post } from "./axios";
-import { queryTodoItemsURL, addTodoItemsURL } from "./ComUrls";
+import { queryTodoItemsURL, addTodoItemsURL, loginURL } from "./ComUrls";
 
+const loginApi = params => post(loginURL, params); // 登陆API
 const queryTodoItemsAPI = params => post(queryTodoItemsURL, params);
 const addTodoItemApi = params => post(addTodoItemsURL, params);
 
-export { queryTodoItemsAPI, addTodoItemApi };
+export { queryTodoItemsAPI, addTodoItemApi, loginApi };

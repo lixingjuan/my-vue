@@ -7,6 +7,7 @@ import AntdDemoPage from "@/views/AntdDemoPage.vue";
 import DebounceThrottlePage from "@/views/DebounceThrottlePage.vue";
 import FileUploadPage from "@/views/FileUploadPage.vue";
 import HomePage from "@/views/HomePage.vue";
+import LoginPage from "@/views/LoginPage.vue";
 import PartScrollPage from "@/views/PartScrollPage.vue";
 import ScrollPage from "@/views/ScrollPage.vue";
 import TodoPage from "@/views/TodoPage.vue";
@@ -14,8 +15,8 @@ import TodoPage from "@/views/TodoPage.vue";
 const routes = [
   {
     path: "/",
-    name: "homepage",
-    component: HomePage
+    name: "LoginPage",
+    component: LoginPage
   },
   {
     path: "/AntdDemoPage",
@@ -36,6 +37,11 @@ const routes = [
     path: "/HomePage",
     name: "homepage",
     component: HomePage
+  },
+  {
+    path: "/LoginPage",
+    name: "loginpage",
+    component: LoginPage
   },
   {
     path: "/PartScrollPage",

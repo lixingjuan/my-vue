@@ -15,6 +15,8 @@ app.use(bodyParser());
 // add router middleware:
 app.use(router.routes());
 
+const { login } = require("./routers");
+
 const main = function(ctx) {
   // koa设置cookies
   const n = Number(ctx.cookies.get("view") || 0) + 1;
@@ -25,6 +27,11 @@ const main = function(ctx) {
 const demo = ctx => {
   ctx.response.body = "hello demo";
 };
+
+// const login = ctx => {
+//   console.log(ctx.request);
+//   ctx.response.body = "hello demo";
+// };
 
 const redirect = ctx => {
   ctx.response.redirect("/");
@@ -43,14 +50,6 @@ const items = async ctx => {
     pageSize},${pageSize} `;
 
   const res = await query(sql);
-  // let res;
-  // if (isComplete === true) {
-  //   res = await query(queryTodoItemsIsDoneSQL);
-  // } else if (isComplete === false) {
-  //   res = await query(queryTodoItemsIsNotDoneSQL);
-  // } else {
-  //   res = await query("SELECT * from todolist");
-  // }
 
   ctx.response.body = res;
 };
@@ -63,7 +62,7 @@ const addTodoItem = async ctx => {
   // {
   //   todoText: '',
   //   uuid: '',
-  //   isDone:0
+  //   isTodo:0
   // }
   console.log(isDone);
   let res = await query(
@@ -85,6 +84,7 @@ console.log("over");
 app.use(route.get("/", main));
 app.use(route.get("/demo", demo));
 app.use(route.get("/err", redirect));
+app.use(route.post("/login", login));
 app.use(route.post("/queryTodoItems", items));
 app.use(route.post("/addTodoItem", addTodoItem));
 // app.use(main);
