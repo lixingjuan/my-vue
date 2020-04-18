@@ -2,7 +2,7 @@
   <div id="top-nav-wrap">
     <p id="backArrowLeft"><van-icon name="arrow-left" /></p>
     <p id="backTitle"><slot>头部</slot></p>
-    <p id="backArrowRight" :class="{ showArrowTitleRight: showArrowTitleRight }">
+    <p id="backArrowRight" :class="{ showArrowRight: showArrowRight }">
       <van-icon name="arrow " />
     </p>
   </div>
@@ -17,7 +17,7 @@ export default {
         showBack: true,
         showMore: true,
         backText: "",
-        showArrowArrowRight: this.arrowArrowRight === "" ? false : this.arrowArrowRight
+        showArrowRight: this.arrowArrowRight === "" ? false : this.arrowArrowRight
       },
       title: "hahah"
     };
@@ -49,8 +49,8 @@ export default {
   #backArrowLeft {
     padding-left: 1rem;
   }
-  #backArrow {
-  }
+  // #backArrow {
+  // }
   #backArrowRight {
     padding-right: 1rem;
     visibility: hidden;

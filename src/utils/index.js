@@ -1,3 +1,5 @@
-import { debounce, colorHexToRgb, colorRgbToHex } from "./utils";
+import throttle from "./throttle";
+import debounce from "./debounce";
+import { colorHexToRgb, colorRgbToHex } from "./utils";
 
-export { colorHexToRgb, colorRgbToHex, debounce };
+export { colorHexToRgb, colorRgbToHex, debounce, throttle };

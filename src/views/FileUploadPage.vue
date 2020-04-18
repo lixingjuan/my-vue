@@ -1,19 +1,14 @@
 <template>
   <div>
-    <tab>
-      <tab-item>11</tab-item>
-      <tab-item>2</tab-item>
-    </tab>
+    <button @click="uploadFile"></button>
+    <input type="file" id="file" /><br />
   </div>
 </template>
 
 <script>
 export default {
   name: "",
-  components: {
-    // Tab,
-    // TabItem
-  },
+  components: {},
   props: {},
   data() {
     return {};
@@ -21,11 +16,7 @@ export default {
   computed: {},
   watch: {},
   created() {},
-  methods: {
-    handler() {
-      console.log(1);
-    }
-  }
+  methods: {}
 };
 </script>
 

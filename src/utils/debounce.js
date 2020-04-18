@@ -1,5 +1,4 @@
 function debounce(func, wait = 1000) {
-  // 可以放入项目中的公共方法中进行调用（鹅只是省事）
   let timeout;
   return function(event) {
     clearTimeout(timeout);
@@ -9,4 +8,4 @@ function debounce(func, wait = 1000) {
   };
 }
 
-export { debounce };
+export default debounce;

@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
+import AntdDemoPage from "@/views/AntdDemoPage.vue";
+import DebounceThrottlePage from "@/views/DebounceThrottlePage.vue";
+import FileUploadPage from "@/views/FileUploadPage.vue";
 import HomePage from "@/views/HomePage.vue";
 import PartScrollPage from "@/views/PartScrollPage.vue";
 import ScrollPage from "@/views/ScrollPage.vue";
@@ -13,6 +16,21 @@ const routes = [
     path: "/",
     name: "homepage",
     component: HomePage
+  },
+  {
+    path: "/AntdDemoPage",
+    name: "antddemopage",
+    component: AntdDemoPage
+  },
+  {
+    path: "/DebounceThrottlePage",
+    name: "debouncethrottlepage",
+    component: DebounceThrottlePage
+  },
+  {
+    path: "/FileUploadPage",
+    name: "fileuploadpage",
+    component: FileUploadPage
   },
   {
     path: "/HomePage",
