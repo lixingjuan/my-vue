@@ -1,6 +1,6 @@
 <template>
   <div id="pageContrainer">
-    <base-top-nav></base-top-nav>
+    <base-top-nav :showBackArrowLeft="true"></base-top-nav>
     <ul id="page_body">
       HOME_CONTRAINER
     </ul>

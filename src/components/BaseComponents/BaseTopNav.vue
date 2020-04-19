@@ -1,11 +1,15 @@
 <template>
-  <div id="top-nav-wrap">
-    <p id="backArrowLeft"><van-icon name="arrow-left" /></p>
-    <p id="backTitle"><slot>头部</slot></p>
-    <p id="backArrowRight" :class="{ showArrowTitleRight: showArrowTitleRight }">
-      <van-icon name="arrow " />
-    </p>
-  </div>
+  <ul id="top-nav-wrap">
+    <li id="backArrowLeft" @click="goBack" v-show="showBackArrowLeft">
+      <van-icon name="arrow-left" />
+    </li>
+    <li id="navBarTitle">
+      <slot>头部</slot>
+    </li>
+    <li id="backArrowRight" class="showArrowRight">
+      菜单
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -13,34 +17,43 @@ export default {
   name: "base-top-nav",
   data() {
     return {
-      leftOptionsProps: {
+      /*  leftOptionsProps: {
         showBack: true,
         showMore: true,
         backText: "",
-        showArrowArrowRight: this.arrowArrowRight === "" ? false : this.arrowArrowRight
+        showArrowRight: this.arrowArrowRight === "" ? false : this.arrowArrowRight
       },
-      title: "hahah"
+      title: "hahah" */
     };
   },
   props: {
-    arrowArrowRight: {
+    showBackArrowLeft: {
       type: Boolean
     }
   },
-  components: {}
+  created() {
+    console.log(this.showBackArrowLeft);
+  },
+  mounted() {
+    console.log(this.showBackArrowLeft);
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 #top-nav-wrap {
   width: 100%;
-  height: 8%;
-  background-color: #1252b1;
+  height: 3rem;
+  background-color: #22a2c3;
   color: #fff;
   display: flex;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
   p {
     height: 100%;
     display: flex;
@@ -48,12 +61,19 @@ export default {
   }
   #backArrowLeft {
     padding-left: 1rem;
+    position: absolute;
   }
-  #backArrow {
+  #navBarTitle {
+    max-width: 60%;
+    margin: 0 auto;
+    color: #323233;
+    font-weight: 500;
+    font-size: 16px;
   }
   #backArrowRight {
     padding-right: 1rem;
     visibility: hidden;
+    position: absolute;
   }
   // .this.arrowTitleRight {
   //   visibility: show;

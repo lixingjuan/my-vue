@@ -1,18 +1,32 @@
 import axios from "axios";
+import { Toast } from "vant";
 
-import { baseURL } from "./ComUrls";
+import { baseURL, loginURL } from "./ComUrls";
+import { docCookies } from "@/utils";
 
 // axios.defaults.baseURL = baseURL;
 
 // 请求超时时间
 axios.defaults.timeout = 3000;
-
-// axios.interceptors.request.use(config => { }, error => { })
+// 请求拦截器
+axios.interceptors.request.use(
+  config => {
+    if (config.url !== loginURL) {
+      const token = docCookies.getItem("token");
+      config.headers.common.Authorization = token;
+    } else {
+      config.headers.common.Authorization = "login";
+    }
+    return config;
+  },
+  error => {
+    console.log("request Error", error);
+  }
+);
 
 // 响应拦截器
 axios.interceptors.response.use(
   response => {
-    window.console.log("response", response);
     if (response && response.status === 200) {
       return Promise.resolve(response);
     } else {
@@ -20,34 +34,35 @@ axios.interceptors.response.use(
     }
   },
   error => {
-    if (error.response && error.response.status) {
+    if (error.response.status) {
       switch (error.response.status) {
         case 401:
-          this.$notification("未登录状态");
+          Toast("未登录状态");
+          window.location.href = "/";
           break;
         case 403:
-          this.$notification({
+          Toast({
             message: "登录过期，请重新登录",
             duration: 1000,
             forbidClick: true
           });
           break;
         case 404:
-          this.$notification({
+          Toast({
             message: "网络请求不存在",
             duration: 1500,
             forbidClick: true
           });
           break;
         case 500:
-          this.$notification({
+          Toast({
             message: "请求失败",
             duration: 1500,
             forbidClick: true
           });
           break;
         default:
-          this.$notification({
+          Toast({
             message: error.response.data.message,
             duration: 1500,
             forbidClick: true
@@ -56,7 +71,7 @@ axios.interceptors.response.use(
       return Promise.reject(error.response);
     } else {
       window.console.log("res异常打印", error);
-      this.$notification("请求异常");
+      Toast("请求异常");
     }
   }
 );
@@ -80,6 +95,7 @@ function get(url, params) {
       });
   });
 }
+
 /**
  * post方法，对应post请求
  * @param {String} url [请求的url地址]

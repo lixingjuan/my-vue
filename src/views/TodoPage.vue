@@ -1,6 +1,7 @@
 <template>
   <div>
-    <base-top-nav />
+    <base-top-nav ref="nav" :showBackArrowLeft="true">TodoList</base-top-nav>
+
     <div id="addWrap">
       <input id="addInput" v-model="inputTodo" />
       <p id="addButton" @click="addItem">ADD</p>
@@ -51,9 +52,7 @@ export default {
       this.$store.commit("getListData", res);
       this.listData = res;
     },
-    toHomePage() {
-      this.$router.push("/");
-    },
+
     testClick() {
       console.log(1);
     },

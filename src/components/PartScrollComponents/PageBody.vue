@@ -69,9 +69,8 @@ export default {
   created() {},
   methods: {
     changeTab(todoOrDoneComponent) {
-      console.log("this.currentTabComponent", this.currentTabComponent);
       // 1. 显示全局loading
-      this.pageLoading = true;
+      this.$store.commit("setPageLoading", true);
 
       // 2. 改变 正在显示组件名称
       this.$store.commit("setCurrentTabComponent", todoOrDoneComponent);
@@ -82,20 +81,7 @@ export default {
       // 4. 清空 '当前显示组件的数据列表'
       this.$store.commit("clearListData");
 
-      // // 5. 再次初始化 ‘下拉刷新’ ‘上拉加载’ ‘我是有底线的’ '可合并' 的 真假
-      // this.dataStatusShowObj = {
-      //   ...this.dataStatusShowObj, // 以防后来又为该对象加入数据
-      //   showPullingUp: false, // 用户正在上拉 && 高度大于设定值
-      //   showPullingDown: false, // 用户正在下拉 && 高度大于设定值
-      //   showNoMoreData: false, // 没有更多数据
-      //   showPageloading: false, // 页面全局loading
-      //   maxScrollLength: 0 // 页面最大下拉高度
-      // };
-
-      // 6. 默认显示全页面loading
-      // this.pageLoading = true;
-      // 7.设置防抖，触发父组件重新发起请求
-      // this.$emit("queryDataEvent");
+      // 5. 触发再次请求
       this.$store.dispatch("queryDataAction");
     }
   }
@@ -108,8 +94,8 @@ export default {
   #tabTitleWrap {
     display: flex;
     align-items: center;
-    width: 100;
-    height: 2rem;
+    width: 100%;
+    height: 3rem;
     display: flex;
     padding: 0rem;
     list-style: none;
