@@ -1,9 +1,10 @@
 const Koa = require("koa");
 const route = require("koa-route");
 const bodyParser = require("koa-bodyparser");
+// const koaBody = require("koa-body"); // 处理文件上传的中间件
 
 const JwtUtil = require("./token/jwt");
-const { login, queryTodoItems, addTodoItem } = require("./routers");
+const { login, queryTodoItems, addTodoItem, uploadFile, queryFiles } = require("./routers");
 
 const app = new Koa();
 
@@ -16,6 +17,14 @@ app.use(bodyParser());
 // add router middleware:
 app.use(router.routes());
 
+// app.use(
+//   koaBody({
+//     multipart: true,
+//     formidable: {
+//       maxFileSize: 200 * 1024 * 1024 // 设置上传文件大小最大限制，默认2M
+//     }
+//   })
+// );
 // app.use(function(req, res, next) {
 //   // 我这里知识把登陆和注册请求去掉了，其他的多有请求都需要进行token校验
 //   if (req.url != "/login" && req.url != "/user/register") {
@@ -57,8 +66,10 @@ app.use(route.get("/", main));
 app.use(route.get("/demo", demo));
 app.use(route.get("/err", redirect));
 app.use(route.post("/login", login));
-app.use(route.post("/queryTodoItems", queryTodoItems)); // 从TodoList表中查询符合条件的项目
+app.use(route.post("/queryFiles", queryFiles));
+app.use(route.post("/uploadFile", uploadFile));
 app.use(route.post("/addTodoItem", addTodoItem)); // 向TodoList表中 新增符合条件的项目
+app.use(route.post("/queryTodoItems", queryTodoItems)); // 从TodoList表中查询符合条件的项目
 // app.use(main);
 
 app.listen(4000);

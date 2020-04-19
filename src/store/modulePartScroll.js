@@ -1,5 +1,7 @@
-import { queryTodoItemsAPI } from "@/request";
+import { Toast } from "vant";
+
 import { debounce } from "@/utils";
+import { queryTodoItemsAPI } from "@/request";
 
 const ModulePartScroll = {
   state: {
@@ -22,38 +24,39 @@ const ModulePartScroll = {
       // 2. 进行接口调用并捕获结果，隐藏页面全局loading
       try {
         res = await queryTodoItemsAPI(params);
+        console.log(res);
       } catch (err) {
-        this.$Toast(err || "请求出错");
+        Toast(err || "请求出错");
       } finally {
         // 设置页面全局loading 为false
         commit("setPageLoading", false);
       }
+      console.log(res);
       commit("setListData", res);
     })
   },
 
   mutations: {
     setCurrentTabComponent(state, currentTabComponent) {
-      console.log("触发了state", currentTabComponent);
+      console.log("触发了mutations,currentTabComponent", currentTabComponent);
       state.currentTabComponent = currentTabComponent;
     },
     setListData(state, listData) {
-      console.log("触发了state", listData);
+      console.log("触发了mutations,listData", listData);
       state.listData = [...state.listData, ...listData];
     },
     clearListData(state, listData) {
-      console.log("触发了state", listData);
+      console.log("触发了mutations,listData", listData);
       state.listData = [];
     },
     setPageLoading(state, pageLoading) {
-      console.log("触发了state", pageLoading);
+      console.log("触发了mutations,pageLoading", pageLoading);
       state.pageLoading = pageLoading;
       console.log("state.pageLoading", state.pageLoading);
     },
     setCurrentPage(state, currentPage) {
-      console.log("触发了state", currentPage);
+      console.log("触发了mutations,currentPage", currentPage);
       state.currentPage = currentPage;
-      console.log("state.currentPage", state.currentPage);
     }
   }
 };

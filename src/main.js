@@ -19,18 +19,18 @@ Vue.prototype.$Toast = Toast;
 /*  END：vant设置 */
 
 /* antd设置 */
-import { message, notification } from "ant-design-vue";
+// import { message, notification } from "ant-design-vue";
 // Vue.component(Button.name, Button);
 
 // START：全局配置
-notification.config({
-  placement: "topRight",
-  bottom: "50px",
-  duration: 3
-});
+// notification.config({
+//   placement: "topRight",
+//   bottom: "50px",
+//   duration: 3
+// });
 
-Vue.prototype.$message = message;
-Vue.prototype.$notification = notification;
+// Vue.prototype.$message = message;
+// Vue.prototype.$notification = notification;
 /* END：antd设置 */
 
 Vue.config.productionTip = false;

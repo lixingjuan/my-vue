@@ -22,5 +22,6 @@ export default {
   position: fixed;
   line-height: 40px;
   background-color: #888;
+  text-align: center;
 }
 </style>

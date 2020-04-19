@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Toast } from "vant";
 
 import { baseURL, loginURL } from "./ComUrls";
 import { docCookies } from "@/utils";
@@ -10,10 +11,7 @@ axios.defaults.timeout = 3000;
 // 请求拦截器
 axios.interceptors.request.use(
   config => {
-    console.log(config);
-
     if (config.url !== loginURL) {
-      console.log("进入判断");
       const token = docCookies.getItem("token");
       config.headers.common.Authorization = token;
     } else {
@@ -29,7 +27,6 @@ axios.interceptors.request.use(
 // 响应拦截器
 axios.interceptors.response.use(
   response => {
-    window.console.log("response", response);
     if (response && response.status === 200) {
       return Promise.resolve(response);
     } else {
@@ -37,34 +34,35 @@ axios.interceptors.response.use(
     }
   },
   error => {
-    if (error.response && error.response.status) {
+    if (error.response.status) {
       switch (error.response.status) {
         case 401:
-          this.$notification("未登录状态");
+          Toast("未登录状态");
+          window.location.href = "/";
           break;
         case 403:
-          this.$notification({
+          Toast({
             message: "登录过期，请重新登录",
             duration: 1000,
             forbidClick: true
           });
           break;
         case 404:
-          this.$notification({
+          Toast({
             message: "网络请求不存在",
             duration: 1500,
             forbidClick: true
           });
           break;
         case 500:
-          this.$notification({
+          Toast({
             message: "请求失败",
             duration: 1500,
             forbidClick: true
           });
           break;
         default:
-          this.$notification({
+          Toast({
             message: error.response.data.message,
             duration: 1500,
             forbidClick: true
@@ -73,7 +71,7 @@ axios.interceptors.response.use(
       return Promise.reject(error.response);
     } else {
       window.console.log("res异常打印", error);
-      this.$notification("请求异常");
+      Toast("请求异常");
     }
   }
 );

@@ -34,17 +34,18 @@ export default {
       showPullingDown: false, // 用户正在下拉 && 高度大于设定值
       showNoMoreData: false, // 没有更多数据
       showPageloading: false, // 页面全局loading
-      innerShorterOuter: true // 列表的高度是否大于滚动外层的高度
+      innerShorterOuter: false // 列表的高度是否大于滚动外层的高度
     };
   },
   computed: {},
   watch: {},
   props: {},
-  created() {},
   mounted() {
     this.scrollFn();
+    const bscrollHeight = this.$refs.bscroll.offsetHeight;
+    const bscrollInnerContainer = this.$refs.bscrollContainer.offsetHeight;
+    this.innerShorterOuter = bscrollInnerContainer <= bscrollHeight;
   },
-
   computed: mapState({
     currentPage: state => state.ModulePartScroll.currentPage,
     pageLoading: state => state.ModulePartScroll.pageLoading,
@@ -63,17 +64,6 @@ export default {
         } else {
           this.scroll.refresh();
         }
-
-        /* 滚动开始之前 */
-        this.scroll.on("beforeScrollStart", () => {
-          // TODO: 解决内部若小于外层时，无法下拉的问题
-          // 计算内层高度是否小于外层高度;
-          const bscrollHeight = this.$refs.bscroll.offsetHeight;
-          const bscrollInnerContainer = this.$refs.bscrollContainer.offsetHeight;
-          // TODO: 这里获取的 this.$refs.bscrollListComponent.$refs.bscrollDataList 为什么没有子DOM节点？？？
-          this.innerShorterOuter = bscrollInnerContainer <= bscrollHeight;
-          console.log(this.innerShorterOuter);
-        });
 
         /* 滚动事件 */
         this.scroll.on("scroll", pos => {
@@ -102,7 +92,6 @@ export default {
             console.log("此时触发刷新动作");
             // 刷新请求步骤
             // 1. 置1分页参数
-            // this.currentPage = 1;
             this.$store.commit("setCurrentPage", 1);
 
             // 2. 清空数据源
@@ -120,7 +109,7 @@ export default {
 
           // 【上拉加载】
           //  用户【上拉】高度大于最大滑动高度20 && 当前未显示没有更多数据 则请求更多数据
-          if (pos.y && pos.y - this.scroll.maxScrollY < 20 && !this.showNoMoreData) {
+          if (pos.y - this.scroll.maxScrollY < 20 && !this.showNoMoreData) {
             console.log(pos.y);
             console.log(this.scroll.maxScrollY);
             console.log("pos.y - this.scroll.maxScrollY", pos.y - this.scroll.maxScrollY);

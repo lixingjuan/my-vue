@@ -18,6 +18,8 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"
       />
+      <p>账号：lixingjuan</p>
+      <p>密码：guagua</p>
       <div style="margin: 16px;" id="submitButton">
         <van-button round block type="info" native-type="submit">
           提交
@@ -50,17 +52,17 @@ export default {
   created() {},
   methods: {
     async onSubmit() {
-      // const params = {
-      //   username: this.username,
-      //   password: this.password
-      // };
       const params = {
-        username: "lixingjuan",
-        password: "guagua"
+        username: this.username,
+        password: this.password
       };
+      // const params = {
+      //   username: "lixingjuan",
+      //   password: "guagua"
+      // };
       const res = await loginApi(params);
       const { token, success, errorMessage } = res;
-      if (success) {
+      if (success === "true") {
         docCookies.setItem("token", token);
         this.$router.push({
           path: "/HomePage"

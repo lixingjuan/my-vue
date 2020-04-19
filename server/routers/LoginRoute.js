@@ -27,7 +27,7 @@ const login = async ctx => {
   }
   const result = res[0];
 
-  if (!result) {
+  if (res.length === 0) {
     // 查询出错，后端问题
     resBody = {
       success: "false",

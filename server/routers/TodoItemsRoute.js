@@ -9,6 +9,7 @@ const queryTodoItems = async ctx => {
   // select * from todolist where isdone=0
   // const sql = `select * from todolist limit (${page} - 1) * ${pageSize},${pageSize} `;
   const reqAuthorization = ctx.header.authorization;
+  console.log("queryTodoItems", ctx.header.authorization);
   const sql = `select * from todolist  WHERE isTodo=${isTodo === true ? 1 : 0} limit ${(page - 1) *
     pageSize},${pageSize} `;
   let resBody;
@@ -18,11 +19,12 @@ const queryTodoItems = async ctx => {
 
   console.log(verifyResult);
   if (verifyResult === "success") {
-    resBody = await query(sql);
+    ctx.response.body = await query(sql);
   } else {
-    resBody = "401";
+    ctx.response.status = 401;
+    ctx.response.body = "";
   }
-  ctx.response.body = resBody;
+  // ctx.response.body = resBody;
 };
 
 const addTodoItem = async ctx => {
@@ -46,6 +48,7 @@ const addTodoItem = async ctx => {
   console.log(res);
   ctx.response.body = res;
 };
+
 module.exports = {
   addTodoItem,
   queryTodoItems

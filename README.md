@@ -28,26 +28,49 @@
 
 ## 各页面介绍
 
+
 ### HomePage: 
 
-- 其他页面的入口页面，页面由脚本生成；
+- 其他页面的入口页面，菜单；
+- 页面由‘/src/utils/generateRouter.js’的脚本生成的
 
-### TodoPage
 
-- 主要侧重于 vuex的使用上；
 
-### scrollPage
+### LoginPage: 
 
-- 一个完整的页面，包括头部nav, 头部tab, 页面上拉加载更多，下拉刷新，页面loading；
+- 账号：lixingjuan
+- 密码：guagua
+- 基于token的前端鉴权，登陆成功后将token存储在cookie里面，使用axios全局捕获，为除了loginUrl的请求都加上token信息
+
+
+
+### PartScrollPage页面
+
+- 与scrollPage的区别在于，下拉刷新是从列表容器开始的，而不是从整个页面
 - 已实现的功能
   1. [x] 下拉刷新(整个页面)
   2. [x] 上拉加载更多
   3. [x] tab切换
   4. [x] 全局loading
+  5. [x] 节流/防抖
+  6. [ ] 现在有个问题，下拉刷新的时候不要清除原本的数据
 
 
-### 另写一个页面
-- 与scrollPage的区别在于，下拉刷新是从列表容器开始的，而不是从整个页面
+
+### TodoPage
+
+- 主要侧重于 vuex的使用上；
+
+
+
+
+### scrollPage
+
+- 与PartScrollPage的区别是，这个滑动是全页面，而PartScrollPage是从top-nav往下
+ 
+
+
+
 
 
 ## 项目结构 示例

@@ -49,7 +49,7 @@ export default {
 #top-nav-wrap {
   width: 100%;
   height: 3rem;
-  background-color: #ccc;
+  background-color: #22a2c3;
   color: #fff;
   display: flex;
   align-items: center;
